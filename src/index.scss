@@ -1,0 +1,197 @@
+$primary-color: #333333;
+$primary-color-name: red;
+$primary-bgcolor: blue;
+$primary-color-description: #ffd200;
+$font: "Jura", sans-serif;
+$font-name: "Luckiest Guy", cursive;
+
+* {
+  font-family: $font;
+}
+
+.nav {
+  padding-left: 5%;
+  font-weight: 900;
+  font-size: 1.5em;
+  background-color: $primary-color-description;
+  letter-spacing: 0.08em;
+
+  .nav-item.active {
+    color: $primary-color-description;
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+
+  .nav-item {
+    color: $primary-color;
+    background-color: $primary-color-description;
+    border-radius: 0;
+  }
+
+  .nav-item:hover {
+    animation: 0.4s ease-in-out 0s normal none running trambling-animation;
+    border-left-color: $primary-color;
+    border-right-color: $primary-color;
+  }
+
+  @keyframes trambling-animation {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25%,
+    75% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+  }
+}
+.tab-content {
+  font-family: $font;
+  font-weight: 900;
+
+  .nav_text {
+    padding: 1%;
+    position: absolute;
+    text-align: justify;
+    font-size: 1.5em;
+    border-radius: 10px;
+    background-color: $primary-color;
+    color: $primary-color-description;
+    border: 5px solid $primary-color-description;
+  }
+
+  #nav-play,
+  #nav-history,
+  #nav-description,
+  #nav-screenshots {
+    position: relative;
+    width: 100%;
+    height: 1080px;
+    margin: 0 auto;
+    background-position: center top;
+  }
+
+  #nav-play {
+    background-image: url(./image/camel.jpg);
+
+    .nav-play__text_game-name {
+      width: 90%;
+      position: absolute;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      top: 15%;
+      font-family: $font-name;
+      letter-spacing: 0.1em;
+      color: $primary-color;
+      -webkit-text-stroke: 1px $primary-color-description;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      font-size: 600%;
+      text-transform: uppercase;
+
+      .nav-play__text_game-name_left,
+      .nav-play__text_game-name_right {
+        height: 80px;
+        font-family: $font-name;
+      }
+    }
+
+    .button-play {
+      position: absolute;
+      padding: 0;
+      top: 40%;
+      left: 42%;
+      width: 16%;
+      min-width: 200px;
+      height: 10%;
+      color: $primary-color;
+      font-family: $font-name;
+      letter-spacing: 0.08em;
+      font-size: 180%;
+      text-align: center;
+      font-size: 2.5em;
+      border-radius: 10px;
+      border: 5px solid $primary-color;
+      box-shadow: 0 5px 5px 2px $primary-color;
+      background-color: $primary-color-description;
+      transition: 0.5s;
+    }
+
+    .button:hover {
+      transform: scale(1.2);
+      transition: 1s;
+      background-color: $primary-color-description;
+    }
+  }
+
+  #nav-history {
+    background-image: url(./image/warrior.jpg);
+
+    .nav-history__text {
+      top: 10%;
+      left: 5%;
+      width: 30%;
+    }
+  }
+  #nav-description {
+    background-image: url(./image/chubaka.jpg);
+
+    .nav-description__text {
+      top: 5%;
+      right: 5%;
+      width: 30%;
+    }
+  }
+  #nav-screenshots {
+    background-image: url(./image/podarok.jpg);
+
+    .nav-screenshots__wrapper {
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .nav-screenshots__item {
+        margin-bottom: 1%;
+        margin-top: 1%;
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 28%;
+        background-color: $primary-color;
+        color: $primary-color-description;
+        border: 5px solid $primary-color-description;
+
+        .nav-screenshots__item_image {
+          margin: auto;
+          max-width: 100%;
+          width: auto;
+        }
+      }
+      .nav-screenshots__item:hover {
+        transform: scale(1.5);
+      }
+    }
+  }
+}
+
+.footer__author {
+  padding-bottom: 7px;
+  padding-top: 7px;
+  padding-right: 5%;
+  text-align: left;
+  justify-content: flex-end;
+  flex-direction: row;
+
+  .footer__author_text {
+    color: $primary-color;
+  }
+}
+.footer__author_text:hover {
+  animation: 0.4s ease-in-out 0s normal none running trambling-animation;
+}

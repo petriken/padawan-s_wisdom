@@ -1,0 +1,174 @@
+$font-name: "Luckiest Guy", cursive;
+$font-name2: "Alegreya Sans", sans-serif;
+$primary-color-description: #ffd200;
+$primary-color: #333333;
+$success-color: #3da028;
+$warning-color: #ff3900;
+
+* {
+  font-family: $font-name;
+  font-weight: 500;
+}
+
+.modal-content {
+  position: absolute;
+  text-align: justify;
+  font-size: 1.2em;
+  border-radius: 10px;
+  color: $primary-color;
+  background-color: $primary-color-description;
+  border: 5px solid $primary-color;
+
+  .modal-header {
+    margin: auto;
+    text-align: center;
+    border-bottom: 2px solid $primary-color;
+
+    .modal-title {
+      font-size: 1.5em;
+      font-family: $font-name;
+    }
+  }
+
+  .modal-body {
+    margin: auto;
+    text-align: center;
+
+    .totalScore {
+      padding: 10px 10px 0 10px;
+      font-size: 1.3em;
+
+      #heroName,
+      #countDefeatMonster {
+        font-family: $font-name2;
+        font-size: 1.4em;
+        font-weight: 900;
+      }
+    }
+
+    .form-group {
+      padding: 10px;
+      font-size: 1.3em;
+
+      .form-control {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.success-modal,
+#victory {
+  background-color: $success-color;
+}
+
+.warning-modal,
+#gameOver {
+  background-color: $warning-color;
+}
+
+// #monsterView {
+//   background-image: url(./images/monstr/predatormask__0001_idle_2.png);
+// }
+
+.btn,
+.btn-primary {
+  color: $primary-color-description !important;
+  background-color: $primary-color !important;
+  font-family: $font-name;
+  font-size: 1.2em;
+  border: 5px solid $primary-color;
+}
+
+.btn-primary:hover {
+  transform: scale(1.1);
+  transition: 1s;
+  border-color: $primary-color;
+}
+
+.modal-task {
+  padding-top: 20px;
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.battle-content {
+  position: relative;
+  background-image: url(./images/game-background.png);
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+
+  .progress-bar-wrapper__left,
+  .progress-bar-wrapper__right {
+    width: 35%;
+    padding-left: 3%;
+    padding-right: 3%;
+
+    .progress-bar-wrapper__name {
+      text-align: center;
+      padding-top: 3%;
+      padding-bottom: 3%;
+      font-family: $font-name2;
+      font-size: 2em;
+      font-weight: 700;
+      color: #ffffff;
+    }
+  }
+  .progress-bar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .progress {
+      height: 1.3rem;
+      font-size: 1rem;
+
+      .progress-bar {
+        color: $primary-color;
+      }
+    }
+  }
+
+  %button-shared {
+    position: absolute;
+    padding: 10px;
+    width: 16%;
+    min-width: 200px;
+    color: $primary-color;
+    font-family: $font-name;
+    font-size: 180%;
+    text-align: center;
+    border-radius: 10px;
+    border: 5px solid $primary-color;
+    box-shadow: 0 5px 5px 2px $primary-color;
+    background-color: $primary-color-description;
+    transition: 0.5s;
+  }
+
+  .button {
+    @extend %button-shared;
+    top: 45%;
+    left: 45%;
+  }
+
+  .button:hover {
+    transform: scale(1.2);
+    transition: 1s;
+    background-color: $primary-color-description;
+    box-shadow: 0 5px 5px 2px $primary-color;
+  }
+
+  .btn-spellSelection {
+    @extend %button-shared;
+
+    top: 5%;
+    left: 42%;
+  }
+
+  .btn-spellSelection:hover {
+    transform: scale(1.2);
+    background-color: $primary-color-description;
+    box-shadow: 0 5px 5px 2px $primary-color;
+  }
+}

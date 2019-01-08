@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>MegaBattle
+  </title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Jura:300,400,500,600,700,900&amp;subset=cyrillic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800,900&amp;subset=cyrillic" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="modal fade" id="exampleModalCenter">
+    <div class="modal-dialog modal-dialog-centered .nav_text" role="document" data-backdrop="static">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Знакомство</h5>
+        </div>
+        <div class="modal-body">
+          <form class="modal-body validate" id="gamer-name-wrap">
+            <div class="form-group">
+              <label for="gamer-name" aria-required="true">Как тебя зовут?</label>
+              <input type="text" name="name" class="form-control required" id="gamer-name">
+            </div>
+            <button type="submit" class="btn btn-primary btn-start" data-dismiss="modal">Приступим</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="battle-content">
+
+  </div>
+
+  <main>
+    <div class="modal fade" id="spellSelection" tabindex="-1" role="dialog" aria-labelledby="spellSelectionLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered nav_text" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle2
+          ">
+              Выбери заклинание, юный падаван
+            </h5>
+          </div>
+          <div class="modal-body">
+            <div class="modal-body" id="mathSpell">
+              <button type="submit" class="btn btn-primary btn-math" data-dismiss="modal" data-toggle="modal"
+                data-target="#arithmetic">
+                Алгебраниум
+              </button>
+            </div>
+            <div class="modal-body" id="LangSpell">
+              <button type="submit" class="btn btn-primary btn-translator" data-dismiss="modal" data-toggle="modal"
+                data-target="#translator">
+                Лингвиниум
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="arithmetic" tabindex="-1" role="dialog" aria-labelledby="arithmeticlabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered nav_text" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle2">Алгебраниум</h5>
+          </div>
+          <div class="modal-body" id="arithmetic-wrap">
+            <div></div>
+            <!-- сюда вставляет задание -->
+            <form class="modal-body" id="arithmetic-answer-wrap">
+              <div class="form-group">
+                <label for="arithmetic-answer" aria-required="true">введите правильный ответ</label>
+                <input type="number" class="form-control" id="arithmetic-answer" required placeholder="ваше число">
+              </div>
+              <button type="submit" class="btn btn-primary" id="btn-math-answer" data-dismiss="modal">отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="translator" tabindex="-1" role="dialog" aria-labelledby="arithmeticlabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered nav_text" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Лингвиниум</h5>
+          </div>
+          <div class="modal-body" id="translator-wrap">
+            <div></div>
+            <!-- сюда вставляет задание -->
+            <form class="modal-body" id="translator-answer-wrap">
+              <div class="form-group">
+                <label for="translator-answer" aria-required="true">введите перевод слова на русском</label>
+                <input type="text" class="form-control" id="translator-answer" required placeholder="ваш перевод">
+              </div>
+              <button type="submit" class="btn btn-primary" id="btn-translator-answer" data-dismiss="modal">отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="correctAnswer" data-dismiss="modal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content success-modal">
+          <div class="modal-header">
+            <h5 class="modal-title">Правильно</h5>
+          </div>
+          <div class="modal-body">
+            <p>Умница, так держать!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="inCorrectAnswer" data-dismiss="modal" data-toggle="modal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content warning-modal">
+          <div class="modal-header">
+            <h5 class="modal-title">Не правильно</h5>
+          </div>
+          <div class="modal-body">
+            <p>Попробуй, еще, юный падаван...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- окно победы -->
+    <div class="modal fade" id="victory" tabindex="-1" role="dialog" aria-labelledby="victoryLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered nav_text" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              МОНСТР ПОВЕРЖЕН, ПОБЕДА!
+            </h5>
+          </div>
+          <div class="modal-body">
+            <div class="modal-body" id="moveToNextMonster">
+              <button type="submit" class="btn btn-primary btn-nextMonster" data-dismiss="modal" data-toggle="modal">
+                Переход к следующему монстру
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Проигрыш, переход к таблице рекордов -->
+    <div class="modal fade" id="gameOver" tabindex="-1" role="dialog" aria-labelledby="gameOver" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered nav_text" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              GAME OVER! Что-то пошло не так...
+            </h5>
+          </div>
+          <div class="modal-body">
+            <p class="totalScore"><span id="heroName">Герой</span>, количество уничтоженных тобой монстров: <span id="countDefeatMonster"></span></p>
+            <div class="modal-body" id="moveToScore">
+              <form action="./battle.html">
+                <button type="submit" class="btn btn-primary btn-goToStart" data-toggle="modal" data-target="#exampleModalCenter"
+                  href="./battle.html">Начни сначала</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <script src="../../../dist/main.bundle.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>padawan's wisdom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Jura:300,400,500,600,700,900&amp;subset=cyrillic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="header__navigation">
+
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-play-tab" data-toggle="tab" href="#nav-play" role="tab"
+          aria-controls="nav-play" aria-selected="true">Play</a>
+        <a class="nav-item nav-link" id="nav-history-tab" data-toggle="tab" href="#nav-history" role="tab"
+          aria-controls="nav-history" aria-selected="false">History</a>
+        <a class="nav-item nav-link" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab"
+          aria-controls="nav-description" aria-selected="false">Description</a>
+        <a class="nav-item nav-link" id="nav-screenshots-tab" data-toggle="tab" href="#nav-screenshots" role="tab"
+          aria-controls="nav-screenshots" aria-selected="false">Screenshots</a>
+      </div>
+
+    </nav>
+    <section class="header__content">
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-play" role="tabpanel" aria-labelledby="nav-play-tab">
+          <article class="nav-play__text_game-name">
+            <div class="nav-play__text_game-name_left">padawan's </div>
+            <div class="nav-play__text_game-name_right"> wisdom</div>
+          </article>
+          <form action="./src/components/battle/battle.html">
+            <button class="ui yellow button button-play" data-toggle="modal" data-target="#exampleModalCenter" href="./src/components/battle/battle.html">PLAY</button>
+          </form>
+        </div>
+
+        <div class="tab-pane fade" id="nav-history" role="tabpanel" aria-labelledby="nav-history-tab">
+          <article class="nav_text nav-history__text">
+            <p> Неспокойные времена настали для рода человеческого. Идет война интеллектуальная. Головы подростков
+              полчище телефонов сотовых и планшетов всяческих захватило. Книги разумные на полках пылятся, учителя
+              школьные разум теряют от навыков падаванов своих... Но пропала не совсем надежда на возрождение интереса
+              к знаниям вселенским... Путь появился возрождения расы Головою думающих Прямоходящих. Средь толпы зомби
+              не думающих, повстанцев объявилось количество скудное. Наносящие удар тайной силой мозговой активности,
+              одержали первую победу, в схватке со зловещей Империей Гаджетов. Во время сражения, разведчикам
+              повстанцев удалось похитить скрижали секретные, связанные с главным оружием Империи - всеобщим разума
+              помутнением, способным уничтожить целую планету. Преследуемые имперскими агентами эрудиты спешат
+              поделиться знаниями своими, дабы возродить из спячки учеников зашоренных. При них находятся скрижали
+              похищенные, которые могут спасти народ и вернуть мозг галактике.</p>
+          </article>
+        </div>
+        <div class="tab-pane fade" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+          <article class="nav_text nav-description__text">
+            <p>Правила просты, юный падаван. Выбери скрижаль знания которой по вкусу тебе приходятся, подумай хорошо и
+              ответь правильно. Каждый ответ правильный отнимет у злодея имперского жизни часть. Ответ неправильный
+              отхватит у тебя процент жизненный. Внимателен будь, будущее зависит от тебя.
+            </p>
+          </article>
+        </div>
+        <div class="tab-pane fade" id="nav-screenshots" role="tabpanel" aria-labelledby="nav-screenshots-tab">
+          <div class="nav-screenshots__wrapper">
+            <div class="nav-screenshots__item"><img class="nav-screenshots__item_image" src="./src/image/screenshots/3.jpg"
+                alt="Скриншот-1"></div>
+            <div class="nav-screenshots__item"><img class="nav-screenshots__item_image" src="./src/image/screenshots/2.jpg"
+                alt="Скриншот-2"></div>
+            <div class="nav-screenshots__item"><img class="nav-screenshots__item_image" src="./src/image/screenshots/1.jpg"
+                alt="Скриншот-3"></div>
+            <div class="nav-screenshots__item"><img class="nav-screenshots__item_image" src="./src/image/screenshots/5.png"
+                alt="Скриншот-4"></div>
+            <div class="nav-screenshots__item"><img class="nav-screenshots__item_image" src="./src/image/screenshots/4.jpg"
+                alt="Скриншот-5"></div>
+            <div class="nav-screenshots__item"><img class="nav-screenshots__item_image" src="./src/image/screenshots/6.jpg"
+                alt="Скриншот-6"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <main>
+
+    </main>
+    <footer class="footer__author nav">
+
+      <a class="footer__author_text" href="https://github.com/petriken" target="_blank">by Piotr Stashukevich</a>
+    </footer>
+
+  </header>
+
+  <script src="./dist/main.bundle.js"></script>
+</body>
+
+</html>
