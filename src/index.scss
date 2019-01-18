@@ -7,71 +7,97 @@ $font-name: "Luckiest Guy", cursive;
 
 * {
   font-family: $font;
-}
 
-.nav {
-  padding-left: 5%;
-  font-weight: 900;
-  font-size: 1.5em;
-  background-color: $primary-color-description;
-  letter-spacing: 0.08em;
-
-  .nav-item.active {
-    color: $primary-color-description;
-    background-color: $primary-color;
-    border-color: $primary-color;
-  }
-
-  .nav-item {
-    color: $primary-color;
-    background-color: $primary-color-description;
-    border-radius: 0;
-  }
-
-  .nav-item:hover {
-    animation: 0.4s ease-in-out 0s normal none running trambling-animation;
-    border-left-color: $primary-color;
-    border-right-color: $primary-color;
-  }
-
-  @keyframes trambling-animation {
-    0%,
-    100% {
-      transform: rotate(0deg);
-    }
-    25%,
-    75% {
-      transform: rotate(-5deg);
-    }
-    50% {
-      transform: rotate(5deg);
-    }
-  }
-}
-.tab-content {
-  font-family: $font;
-  font-weight: 900;
-
-  .nav_text {
-    padding: 1%;
-    position: absolute;
-    text-align: justify;
+  .nav {
+    padding-left: 5%;
+    font-weight: 900;
     font-size: 1.5em;
-    border-radius: 10px;
-    background-color: $primary-color;
-    color: $primary-color-description;
-    border: 5px solid $primary-color-description;
+    background-color: $primary-color-description;
+    letter-spacing: 0.08em;
+
+    .nav-item.active {
+      color: $primary-color-description;
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+
+    .nav-item {
+      color: $primary-color;
+      background-color: $primary-color-description;
+      border-radius: 0;
+    }
+
+    .nav-item:hover {
+      animation: 0.4s ease-in-out 0s normal none running trambling-animation;
+      border-left-color: $primary-color;
+      border-right-color: $primary-color;
+    }
+
+    @keyframes trambling-animation {
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+      25%,
+      75% {
+        transform: rotate(-5deg);
+      }
+      50% {
+        transform: rotate(5deg);
+      }
+    }
   }
 
-  #nav-play,
-  #nav-history,
-  #nav-description,
-  #nav-screenshots {
-    position: relative;
-    width: 100%;
-    height: 1080px;
-    margin: 0 auto;
-    background-position: center top;
+  @media screen and (max-height: 1080px) and (min-height: 800px) {
+    #nav-play,
+    #nav-history,
+    #nav-description,
+    #nav-screenshots {
+      height: 1012px;
+    }
+
+    .nav_text {
+      font-size: 1.5em;
+    }
+  }
+
+  @media screen and (max-height: 800px) and (min-height: 600px) {
+    #nav-play,
+    #nav-history,
+    #nav-description,
+    #nav-screenshots {
+      height: 700px;
+    }
+
+    .nav_text {
+      font-size: 1.2em;
+    }
+  }
+
+  .tab-content {
+    font-family: $font;
+    font-weight: 900;
+
+    .nav_text {
+      padding: 1%;
+      position: absolute;
+      text-align: justify;
+      border-radius: 10px;
+      background-color: $primary-color;
+      color: $primary-color-description;
+      border: 5px solid $primary-color-description;
+    }
+
+    #nav-play,
+    #nav-history,
+    #nav-description,
+    #nav-screenshots {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      background-position: center top;
+      background-size: cover;
+    }
   }
 
   #nav-play {
@@ -150,6 +176,7 @@ $font-name: "Luckiest Guy", cursive;
     background-image: url(./image/podarok.jpg);
 
     .nav-screenshots__wrapper {
+      position: relative;
       width: 90%;
       margin: 0 auto;
       display: flex;
@@ -157,24 +184,43 @@ $font-name: "Luckiest Guy", cursive;
       align-items: center;
       flex-wrap: wrap;
 
+      .screenshot-1:hover {
+        transform: matrix(3, 0, 0, 3, 450, 300);
+      }
+
+      .screenshot-2:hover {
+        transform: matrix(3, 0, 0, 3, -450, 300);
+      }
+
+      .screenshot-3:hover {
+        transform: matrix(3, 0, 0, 3, 450, 0);
+      }
+
+      .screenshot-4:hover {
+        transform: matrix(3, 0, 0, 3, -450, 0);
+      }
+
+      .screenshot-5:hover {
+        transform: matrix(3, 0, 0, 3, 450, -250);
+      }
+
+      .screenshot-6:hover {
+        transform: matrix(3, 0, 0, 3, -450, -250);
+      }
+
       .nav-screenshots__item {
         margin-bottom: 1%;
         margin-top: 1%;
         margin-left: 5%;
         margin-right: 5%;
-        width: 28%;
+        width: 30%;
         background-color: $primary-color;
         color: $primary-color-description;
         border: 5px solid $primary-color-description;
 
         .nav-screenshots__item_image {
-          margin: auto;
           max-width: 100%;
-          width: auto;
         }
-      }
-      .nav-screenshots__item:hover {
-        transform: scale(1.5);
       }
     }
   }

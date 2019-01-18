@@ -1,7 +1,6 @@
 import "./battle.scss";
 import "bootstrap";
 import $ from "jquery";
-// import ModalDialog from "../modal-dialog/modal-dialog";
 import arithmeticValue from "../common/math";
 import { BattleDraw } from "./battleDraw";
 
@@ -9,8 +8,16 @@ import { setMonsterName } from "../common/setMonsterName";
 import { setGamerName } from "../common/setGamerName";
 import { wordsForTranslator } from "../common/wordsForTranslator";
 import { playSound } from "./audio/playSound";
+import { playerFire } from "../common/playerFire";
+import { playerDamage } from "../common/playerDamage";
+import { playerDraw } from "../common/playerDraw";
+import { loadAllImage, getCrash } from "../common/canvas";
+import { getAllMonsterParts } from "../common/canvas";
+import { startAnimation } from "../common/canvas";
+import { getDamage } from "../common/canvas";
+import { flyFireball } from "../common/canvas";
 
-$(document).ready(function() {
+$(document).ready(function () {
   $("#exampleModalCenter").modal("show");
 });
 
@@ -19,7 +26,7 @@ $("#exampleModalCenter").modal({
   keyboard: false
 });
 
-$("#exampleModalCenter").on("shown.bs.modal", function() {
+$("#exampleModalCenter").on("shown.bs.modal", function () {
   $("#gamer-name").focus();
 });
 
@@ -28,6 +35,8 @@ const choiceNameButton = document.querySelector(".btn-start");
 choiceNameButton.addEventListener("click", BattleDraw.draw);
 choiceNameButton.addEventListener("click", setGamerName);
 choiceNameButton.addEventListener("click", setMonsterName);
+choiceNameButton.addEventListener("click", playerDraw);
+choiceNameButton.addEventListener("click", function () { setTimeout(startAnimation(false), 100) })
 
 function keypress(e) {
   if (e.keyCode == "13") {
@@ -39,7 +48,7 @@ function keypress(e) {
 window.addEventListener("keydown", keypress);
 
 function goToVictoryModal() {
-  $(document).ready(function() {
+  $(document).ready(function () {
     $("#victory").modal("show");
   });
   playSound("applause");
@@ -50,7 +59,7 @@ function goToVictoryModal() {
 }
 
 function goToScore() {
-  $(document).ready(function() {
+  $(document).ready(function () {
     $("#gameOver").modal("show");
   });
   playSound("false");
@@ -76,52 +85,59 @@ function setArithmeticTask() {
 const arithmeticButton = document.querySelector(".btn-math");
 arithmeticButton.addEventListener("click", setArithmeticTask);
 
-$("#arithmetic").on("shown.bs.modal", function() {
+$("#arithmetic").on("shown.bs.modal", function () {
   $("#arithmetic-answer").focus();
 });
 
+let monsterHealht = 100;
+let playerHealth = 20;
+
 function correctMath() {
+
   let answerMath = document.getElementById("arithmetic-answer").value;
   if (math[1] === +answerMath) {
-    $(document).ready(function() {
+    $(document).ready(function () {
       $("#correctAnswer").modal("toggle");
     });
-    playSound("fight");
-    setTimeout(function() {
+    setTimeout(function () {
       $("#correctAnswer").modal("toggle");
-    }, 1500);
+    }, 1000);
+    setTimeout((playerFire), 1000);
+    if (monsterHealht > 20) {
+      setTimeout((getDamage), 2200);
+    }
 
     // уменьшаем прогресс
     let currentValueProgress = parseInt(
       document.querySelector(".progress-bar-value__right").style.width,
       10
     );
-    console.log(currentValueProgress);
     let nextValueProgress = currentValueProgress - 20 + "%";
-    console.log(nextValueProgress);
     $(".progress-bar-value__right").css("width", nextValueProgress);
-    if (parseInt(nextValueProgress, 10) <= 0) {
-      setTimeout(goToVictoryModal, 2000);
+    monsterHealht = parseInt(nextValueProgress, 10);
+    if (monsterHealht <= 0) {
+      setTimeout(getCrash, 2300);
+      setTimeout(goToVictoryModal, 4200);
     }
   } else {
-    $(document).ready(function() {
+    $(document).ready(function () {
       $("#inCorrectAnswer").modal("show");
     });
-    playSound("glass");
-    setTimeout(function() {
+    setTimeout(function () {
       $("#inCorrectAnswer").modal("toggle");
-    }, 1500);
+    }, 1000);
+    setTimeout((flyFireball), 1000);
+    setTimeout((playerDamage), 1500);
 
     // уменьшаем прогресс
     let currentValueProgress = parseInt(
       document.querySelector(".progress-bar-value__left").style.width,
       10
     );
-    console.log(currentValueProgress);
     let nextValueProgress = currentValueProgress - 20 + "%";
-    console.log(nextValueProgress);
     $(".progress-bar-value__left").css("width", nextValueProgress);
-    if (parseInt(nextValueProgress, 10) <= 0) {
+    playerHealth = parseInt(nextValueProgress, 10);
+    if (playerHealth <= 0) {
       setTimeout(goToScore, 2000);
     }
   }
@@ -129,7 +145,7 @@ function correctMath() {
 }
 
 const arithmeticButtonAnswer = document.getElementById("btn-math-answer");
-$(document).ready(function() {
+$(document).ready(function () {
   $(arithmeticButtonAnswer.addEventListener("click", correctMath));
 });
 
@@ -143,9 +159,6 @@ function setTranslatorTask() {
   let index = Math.floor(Math.random() * wordsForTranslator.length);
   word = wordsForTranslator[index].word;
   translationArray = wordsForTranslator[index].translation;
-
-  console.log(translationArray);
-
   let translatorTask = document.createElement("p");
   translatorTask.className = "modal-task";
   translatorTask.textContent = word;
@@ -157,7 +170,7 @@ function setTranslatorTask() {
 const translatorButton = document.querySelector(".btn-translator");
 translatorButton.addEventListener("click", setTranslatorTask);
 
-$("#translator").on("shown.bs.modal", function() {
+$("#translator").on("shown.bs.modal", function () {
   $("#translator-answer").focus();
 });
 
@@ -166,13 +179,17 @@ function correctTranslator() {
     .getElementById("translator-answer")
     .value.toLowerCase();
   if (translationArray.indexOf(answerTranslator) !== -1) {
-    $(document).ready(function() {
+    $(document).ready(function () {
       $("#correctAnswer").modal("toggle");
     });
-    playSound("fight");
-    setTimeout(function() {
+    // playSound("fight");
+    setTimeout(function () {
       $("#correctAnswer").modal("toggle");
-    }, 1500);
+    }, 1000);
+    setTimeout((playerFire), 1000);
+    if (monsterHealht > 20) {
+      setTimeout((getDamage), 2200);
+    }
 
     // уменьшаем прогресс
     let currentValueProgress = parseInt(
@@ -181,17 +198,21 @@ function correctTranslator() {
     );
     let nextValueProgress = currentValueProgress - 20 + "%";
     $(".progress-bar-value__right").css("width", nextValueProgress);
-    if (parseInt(nextValueProgress, 10) <= 0) {
-      setTimeout(goToVictoryModal, 2000);
+    monsterHealht = parseInt(nextValueProgress, 10);
+    if (monsterHealht <= 0) {
+      setTimeout(getCrash, 2300);
+      setTimeout(goToVictoryModal, 4200);
     }
   } else {
-    $(document).ready(function() {
+    $(document).ready(function () {
       $("#inCorrectAnswer").modal("show");
     });
-    playSound("glass");
-    setTimeout(function() {
+    // playSound("glass");
+    setTimeout(function () {
       $("#inCorrectAnswer").modal("toggle");
-    }, 1500);
+    }, 1000);
+    setTimeout((flyFireball), 1000);
+    setTimeout((playerDamage), 1500);
 
     // уменьшаем прогресс
     let currentValueProgress = parseInt(
@@ -200,15 +221,17 @@ function correctTranslator() {
     );
     let nextValueProgress = currentValueProgress - 20 + "%";
     $(".progress-bar-value__left").css("width", nextValueProgress);
-    if (parseInt(nextValueProgress, 10) <= 0) {
-      setTimeout(goToScore, 2000);
+    playerHealth = parseInt(nextValueProgress, 10);
+    if (playerHealth <= 0) {
+
+      setTimeout(goToScore, 2300);
     }
   }
   document.getElementById("translator-answer").value = "";
 }
 
 const translatorButtonAnswer = document.getElementById("btn-translator-answer");
-$(document).ready(function() {
+$(document).ready(function () {
   $(translatorButtonAnswer.addEventListener("click", correctTranslator));
 });
 
@@ -218,8 +241,10 @@ function healthRecoveryMonster() {
 }
 
 $("#moveToNextMonster")
-  .click(function() {
+  .click(function () {
     $(".progress-bar-wrapper__name.monster").detach();
-  })
-  .click(setMonsterName)
-  .click(healthRecoveryMonster);
+  }).click(setMonsterName)
+  .click(healthRecoveryMonster)
+  .click(getAllMonsterParts)
+  .click(loadAllImage)
+  .click(startAnimation);

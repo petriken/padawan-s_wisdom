@@ -13,7 +13,7 @@ $warning-color: #ff3900;
 .modal-content {
   position: absolute;
   text-align: justify;
-  font-size: 1.2em;
+  font-size: 1.3rem;
   border-radius: 10px;
   color: $primary-color;
   background-color: $primary-color-description;
@@ -25,7 +25,7 @@ $warning-color: #ff3900;
     border-bottom: 2px solid $primary-color;
 
     .modal-title {
-      font-size: 1.5em;
+      font-size: 1.7rem;
       font-family: $font-name;
     }
   }
@@ -36,7 +36,7 @@ $warning-color: #ff3900;
 
     .totalScore {
       padding: 10px 10px 0 10px;
-      font-size: 1.3em;
+      font-size: 1.1em;
 
       #heroName,
       #countDefeatMonster {
@@ -48,7 +48,7 @@ $warning-color: #ff3900;
 
     .form-group {
       padding: 10px;
-      font-size: 1.3em;
+      font-size: 1.6rem;
 
       .form-control {
         margin-top: 10px;
@@ -66,10 +66,6 @@ $warning-color: #ff3900;
 #gameOver {
   background-color: $warning-color;
 }
-
-// #monsterView {
-//   background-image: url(./images/monstr/predatormask__0001_idle_2.png);
-// }
 
 .btn,
 .btn-primary {
@@ -170,5 +166,36 @@ $warning-color: #ff3900;
     transform: scale(1.2);
     background-color: $primary-color-description;
     box-shadow: 0 5px 5px 2px $primary-color;
+  }
+
+  .battle-content__fight {
+    position: relative;
+    top: 70px;
+    width: 1250px;
+    height: 80%;
+    margin: 0 auto;
+
+    .battle-content__fight_canvas-wrapper {
+      position: absolute;
+      right: 0;
+      bottom: 10%;
+    }
+
+    #playerFigure-wrapper {
+      position: absolute;
+      margin: 1.5%;
+      bottom: 10%;
+      left: 5%;
+      z-index: 2;
+
+      #image_id,
+      #playerFire-image_id {
+        height: 416px;
+      }
+      #playerFire-image_id,
+      #playerDamage-image_id {
+        display: none;
+      }
+    }
   }
 }
